@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NoJS Slider</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: rgb(179, 179, 179);
+      }
+      .slider-wrapper {
+        background-color: rgb(36, 33, 29);
+        margin: 0 auto;
+        margin-top: 10px;
+        min-width: 220px;
+        max-width: 540px;
+        box-sizing: border-box;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        overflow: hidden;
+      }
+
+      .meme {
+        order: 1;
+        width: 0;
+        height: 0;
+        transform: translateX(100%);
+        transition: transform 0.2s;
+      }
+
+      .caption {
+        order: 3;
+        color: aliceblue;
+        max-width: 60%;
+        margin-top: 20px;
+
+        opacity: 0;
+        margin-right: 0;
+        font-size: 0;
+        transform: translateX(100%);
+        transition: transform 0.2s, opacity 1.5s;
+      }
+      .bullet {
+        order: 2;
+        padding: 6px;
+        max-height: 18px;
+        margin-top: 14px;
+      }
+      .checkmark {
+        width: 12px;
+        height: 12px;
+        border: 2px solid;
+        border-radius: 50%;
+        border-color: #71abfe;
+        background-color: #71abfe;
+        transition: border-color 0.2s, background-color 0.2s;
+      }
+      input:checked + .bullet .checkmark {
+        transition: border-color 0.2s, background-color 0.2s;
+        background-color: transparent;
+      }
+      .slider-wrapper > :not(input:checked) + .bullet:hover .checkmark {
+        background-color: white;
+      }
+      .bullet:hover .checkmark {
+        border: 2px solid white;
+      }
+      .bullet:hover {
+        cursor: pointer;
+      }
+      input {
+        display: none;
+      }
+      #rbm1:checked ~ .meme:nth-of-type(1),
+      #rbm2:checked ~ .meme:nth-of-type(2),
+      #rbm3:checked ~ .meme:nth-of-type(3),
+      #rbm4:checked ~ .meme:nth-of-type(4),
+      #rbm5:checked ~ .meme:nth-of-type(5) {
+        width: 100%;
+        height: initial;
+        transform: none;
+        transition: transform 0.2s;
+      }
+
+      #rbm1:checked ~ .caption:nth-of-type(1),
+      #rbm2:checked ~ .caption:nth-of-type(2),
+      #rbm3:checked ~ .caption:nth-of-type(3),
+      #rbm4:checked ~ .caption:nth-of-type(4),
+      #rbm5:checked ~ .caption:nth-of-type(5) {
+        opacity: 1;
+        font-size: initial;
+        transform: none;
+        margin-right: auto;
+      }
+
+      @media screen and (max-width: 420px) {
+        #rbm1:checked ~ .caption:nth-of-type(1),
+        #rbm2:checked ~ .caption:nth-of-type(2),
+        #rbm3:checked ~ .caption:nth-of-type(3),
+        #rbm4:checked ~ .caption:nth-of-type(4),
+        #rbm5:checked ~ .caption:nth-of-type(5) {
+          max-width: 100%;
+          width: 100%;
+          margin-top: 14px;
+          opacity: 1;
+          font-size: initial;
+          transform: none;
+          margin-right: auto;
+        }
+        .slider-wrapper {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider-wrapper">
+      <input type="radio" name="m" id="rbm5" />
+      <label class="bullet" for="rbm5"><div class="checkmark"></div></label>
+
+      <input type="radio" name="m" id="rbm4" />
+      <label class="bullet" for="rbm4"><div class="checkmark"></div></label>
+
+      <input type="radio" name="m" id="rbm3" />
+      <label class="bullet" for="rbm3"><div class="checkmark"></div></label>
+
+      <input type="radio" name="m" id="rbm2" />
+      <label class="bullet" for="rbm2"><div class="checkmark"></div></label>
+
+      <input type="radio" name="m" id="rbm1" checked />
+      <label class="bullet" for="rbm1"><div class="checkmark"></div></label>
+
+      <div class="caption">(This is meme 1)</div>
+      <img class="meme" src="./memes/1.jpg" alt="meme1" />
+
+      <div class="caption">(This is meme 2) Lorem ipsum dolor sit amet.</div>
+      <img class="meme" src="./memes/2.jpeg" alt="meme2" />
+
+      <div class="caption">
+        (This is meme 3) Lorem ipsum dolor sit amet consectetur adipisicing
+        elit. Delectus facere impedit consequatur, quisquam ad laborum.
+      </div>
+      <img class="meme" src="./memes/3.png" alt="meme3" />
+
+      <div class="caption">
+        (This is meme 4) Lorem ipsum dolor sit amet consectetur, adipisicing
+        elit. Placeat autem incidunt a tempora amet? Unde id dolor quod
+        consequatur dolorem, saepe illum ipsa. Fuga illum, culpa ad excepturi
+        soluta ullam!
+      </div>
+      <img class="meme" src="./memes/4.jpg" alt="meme4" />
+
+      <div class="caption">
+        (This is meme 5) Lorem ipsum dolor sit amet consectetur adipisicing
+        elit. Tempora illo facere, minus nam alias magni maxime repellendus
+        beatae mollitia odit ipsam explicabo ratione expedita eius eos eveniet
+        dolorem magnam quam pariatur repudiandae dignissimos consequuntur!
+        Praesentium, tempore. Veniam sunt laboriosam quia. Aliquam soluta sunt
+        fugiat aperiam!
+      </div>
+      <img class="meme" src="./memes/5.jpg" alt="meme5" />
+    </div>
+  </body>
+</html>
